@@ -4,7 +4,7 @@ This repo is dedicated to research in sphere of End User Development or somethin
 
 Probably I'm talking about [Eve](https://github.com/witheve/Eve).
 
-For now here is papers I'm reading & notes below. Feel free to email me, start dialog here.
+For now, here are papers I'm reading & notes below. Feel free to contact me, start dialog here.
 
 # Bibliography
 
