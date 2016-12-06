@@ -1,6 +1,6 @@
 # End User Development
 
-This repo is dedicated to research in sphere of End User Development or something simmilar. It's aim to provide users and developers with an elegant tool better than Excel or various BPMNs.
+This repo is dedicated to research in sphere of End User Development or something similar. It's aim to provide users and developers with an elegant tool better than Excel or various BPMNs.
 
 Probably I'm talking about [Eve](https://github.com/witheve/Eve).
 
