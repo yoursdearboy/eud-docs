@@ -1,0 +1,9 @@
+#!/bin/sh
+source ./bin/misc
+
+# Regenerate Bibliography
+if is_staged "Bibliography.bib"; then
+  if ! pandoc-citeproc -V >/dev/null 2>&1; then
+    echo "\nNote: Bibliography markdown wasn't regenerated." >> $1
+  fi
+fi

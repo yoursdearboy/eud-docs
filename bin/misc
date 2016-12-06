@@ -1,0 +1,5 @@
+# Check whether file is staged
+staged_files="$(git diff --name-only --cached)"
+is_staged() {
+  echo "$staged_files" | grep --quiet "$1"
+}

@@ -1,0 +1,46 @@
+#!/bin/sh
+# Converts bib file to markdown bibliography text.
+# Treats markdown headings in bib file as chapters.
+# You can put any markdown there and
+# actually use references to entries in the chapter.
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 bib-file [csl-file]"
+  exit 1;
+fi
+
+PANDOC_BASE_CMD="pandoc
+  --filter pandoc-citeproc
+  -t markdown_github"
+
+if [ ! -z "$2" ]; then
+  PANDOC_BASE_CMD="$PANDOC_BASE_CMD --csl $2"
+fi
+
+chapters=$(grep -n "#" $1 | cut -d':' -f1)
+chapters_filter=$(echo "$chapters" |
+  sed -n '/.*/p;x;p;d;x;' | tail -n +3 |
+  paste -d '-' - - | xargs -n1 printf "%s > 2\n" | bc)
+chapters_filter_indexes=`echo "$chapters_filter" | cat -n | grep -e "1$" | cut -f1`
+chapters_filter_sed_cmd=$(echo $chapters_filter_indexes | tr '\n' ' ' | sed 's/ /p;/g')
+chapters=$(echo "$chapters" | tail -n +2 | sed -n -e $chapters_filter_sed_cmd)
+end=$(expr `wc -l < $1` + 1) # + 1 because point actually is a next line
+chapters=$(echo "$chapters\n$end")
+
+ppoint=1
+for point in $chapters; do
+  point=$(expr $point - 1)
+
+  content=$(sed "$ppoint,$point!d" $1)
+  header=$(echo "$content" | grep -e "^@" | sed "s/@.*{\(.*\),/@\1/" | tr '\n' ',' | xargs printf '\-\-\-\nnocite: |\n %s \n\-\-\-')
+  md_content=$(echo "$content" | sed '/^@.*{.*/,/^}$/d' | sed '/^$/N;/^\n$/d')
+  bb_content=$(echo "$content" | sed -n '/^@.*{.*/,/^}$/p')
+
+  echo "$bb_content" > /tmp/chapter.bib
+  pandoc_cmd="$PANDOC_BASE_CMD --bibliography /tmp/chapter.bib"
+  echo "$header\n$md_content" | eval $pandoc_cmd
+  echo ""
+  rm /tmp/chapter.bib
+
+  ppoint=$point
+done
