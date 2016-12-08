@@ -7,6 +7,8 @@ Myers, Brad A, Andrew J Ko, and Margaret M Burnett. “Invited Research Overview
 
 Lieberman, Henry, Fabio Paternò, Markus Klann, and Volker Wulf. “End-User Development: An Emerging Paradigm.” In *End User Development*, 1–8. Springer, 2006.
 
+Lieberman, Henry. *End User Development*. Dordrecht: Springer, 2006.
+
 “The Encyclopedia of Human-Computer Interaction: End-User Development.” <https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/end-user-development>, n.d.
 
 Burnett, Margaret, Curtis Cook, and Gregg Rothermel. “End-User Software Engineering.” *Communications of the ACM* 47, no. 9 (2004): 53–58.
