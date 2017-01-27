@@ -164,3 +164,5 @@ Other
 
 Lampson, Butler W. “Software Components: Only the Giants Survive.” In *Computer Systems*, 137–45. Springer, 2004.
 
+Valero-Mora, Pedro M, Rubén D Ledesma, and others. “Graphical User Interface for R.” *Journal of Statistical Software* 49, no. 1 (2012): 1–8.
+
